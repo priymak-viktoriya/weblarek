@@ -22,12 +22,12 @@ export class Products {
         this.selectedItem = item;
     }
 
-    getSelectedItem(): IProduct | null {
-        return this.selectedItem;
+   setSelectedItem(item: IProduct): void {
+        this.selectedItem = item;
     }
 }
 
-    getProduct(): IProduct | null {
-        return this.selectedProduct;
+    getSelectedItem(): IProduct | null {
+        return this.selectedItem;
     }
 }
