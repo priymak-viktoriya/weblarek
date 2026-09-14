@@ -3,6 +3,7 @@ import { Products } from './components/Models/Products';
 import { Basket } from './components/Models/Basket';
 import { Buyer } from './components/Models/Buyer';
 import { Api } from './components/base/Api';
+import { EventEmitter } from './components/base/Events';
 import { WebLarekApi } from './components/WebLarekApi';
 import { API_URL } from './utils/constants';
 import { apiProducts } from './utils/data';
@@ -10,7 +11,12 @@ import { apiProducts } from './utils/data';
 // === Тестирование моделей данных ===
 console.log('=== Тестирование моделей данных ===');
 
-const productsModel = new Products();
+const events = new EventEmitter();
+
+const productsModel = new Products(events);
+const basketModel = new Basket(events);
+const buyerModel = new Buyer(events);
+
 productsModel.setItems(apiProducts.items);
 console.log('Товары в каталоге:', productsModel.getItems());
 
@@ -23,8 +29,6 @@ if (firstProduct) {
     const found = productsModel.getItem(firstProduct.id);
     console.log('Поиск по id:', found);
 }
-
-const basketModel = new Basket();
 
 // Добавляем сразу два товара, чтобы была видна динамика изменений
 if (firstProduct) {
@@ -40,17 +44,16 @@ console.log('Сумма корзины:', basketModel.getTotal());
 if (firstProduct) {
     console.log('Наличие первого товара в корзине:', basketModel.hasItem(firstProduct.id));
 }
+
 // Удаляем один товар — в корзине остаётся второй
 if (firstProduct) {
     basketModel.removeItem(firstProduct.id);
     console.log('Корзина после удаления первого товара:', basketModel.getItems());
 }
 
-
 basketModel.clear();
 console.log('Корзина после очистки:', basketModel.getItems());
 
-const buyerModel = new Buyer();
 buyerModel.setPayment('card');
 buyerModel.setAddress('Москва');
 buyerModel.setEmail('test@example.com');
