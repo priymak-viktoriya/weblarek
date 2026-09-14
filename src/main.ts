@@ -204,7 +204,6 @@ events.on('basket:open', () => {
 
 // Кнопка «Оформить» — открыть первую форму оформления
 events.on('basket:submit', () => {
-    updateOrderForm();
     modalView.content = orderFormView.render();
     modalView.open();
 });
@@ -221,7 +220,6 @@ events.on('order:change', (data: { name: string; value: string }) => {
 
 // Переход ко второй форме оформления
 events.on('order:submit', () => {
-    updateContactsForm();
     modalView.content = contactsFormView.render();
     modalView.open();
 });
