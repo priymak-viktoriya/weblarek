@@ -25,14 +25,7 @@ export class Basket extends Component<BasketState> {
     }
 
     set items(value: HTMLElement[]) {
-        if (value.length) {
-            this.listNode.replaceChildren(...value);
-        } else {
-            this.listNode.replaceChildren();
-            const empty = document.createElement('p');
-            empty.textContent = 'Корзина пуста';
-            this.listNode.append(empty);
-        }
+        this.listNode.replaceChildren(...value);
     }
 
     set total(value: number) {
