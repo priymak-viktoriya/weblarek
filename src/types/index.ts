@@ -39,3 +39,9 @@ export interface IOrderResponse {
     id: string;
     total: number;
 }
+
+export interface ICardActions {
+    onClick?: () => void;
+    onDelete?: () => void;
+    onButtonClick?: () => void;
+}
