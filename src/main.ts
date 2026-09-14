@@ -1,7 +1,7 @@
 import './scss/styles.scss';
-import { Products } from './components/Models/Products';
-import { Basket } from './components/Models/Basket';
-import { Buyer } from './components/Models/Buyer';
+import { Products } from './components/models/Product';
+import { Basket } from './components/models/Basket';
+import { Buyer } from './components/models/Bueyr';
 import { Api } from './components/base/Api';
 import { EventEmitter } from './components/base/Events';
 import { WebLarekApi } from './components/WebLarekApi';
