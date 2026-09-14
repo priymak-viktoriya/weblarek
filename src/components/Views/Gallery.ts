@@ -10,7 +10,6 @@ export class Gallery extends Component<GalleryState> {
     }
 
     set catalog(items: HTMLElement[]) {
-        this.container.innerHTML = '';
-        this.container.append(...items);
+       this.container.replaceChildren(...items);
     }
 }
